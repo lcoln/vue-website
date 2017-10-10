@@ -1,6 +1,6 @@
-# vue-components
+# vue-personal-website
 
-> components make by vue.js
+> personal-website make by vue.js
 
 ## Build Setup
 

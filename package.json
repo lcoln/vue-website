@@ -1,11 +1,11 @@
 {
-  "name": "vue-components",
+  "name": "vue-personal-website",
   "version": "1.0.0",
-  "description": "components make by vue.js",
+  "description": "personal-website make by vue.js",
   "author": "linteng <875482941@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "node build/dev-server-main.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },

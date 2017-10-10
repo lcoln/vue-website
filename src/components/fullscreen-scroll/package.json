@@ -1,0 +1,11 @@
+{
+  "name": "fullscreen-scroll",
+  "version": "1.0.0",
+  "description": "默认main应用",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "linteng",
+  "license": "ISC"
+}
