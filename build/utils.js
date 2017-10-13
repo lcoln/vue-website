@@ -9,6 +9,10 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
+exports.extractTextPlugin = function (syntax) {
+  return ExtractTextPlugin.extract(syntax)
+}
+
 exports.cssLoaders = function (options) {
   options = options || {}
 

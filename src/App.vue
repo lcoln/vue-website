@@ -1,13 +1,15 @@
 <template>
-  <div id="app">
-    <div id="fullPage">
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
+    <div id="app">
+        <div id="fullPage">
+            <section class="page page1">
+                <div class="content"></div>
+            </section>
+            <section class="page"></section>
+            <section class="page"></section>
+            <section class="page"></section>
+            <section class="page"></section>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -19,7 +21,8 @@ export default {
   mounted: function(){
     var fullpage = (require('./components/fullscreen-scroll/main.js')).default
     fullpage.init('fullPage', 'page', '.4')
-    console.log(fullpage);
+    var hover = (require('./components/pointer-hover-slider/main.js')).default
+    console.log(hover);
   },
   components: {
     Hello
@@ -27,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
 #app {
   width: 100%;
   height: 100%;
@@ -41,10 +44,13 @@ export default {
 body,html{width: 100%;height: 100%}
 a{text-decoration: none;}
 #fullPage{width: 100%;height: 100%;background: #ddd;}
-#fullPage .page{width: 100%;height: 100%;background: #bbb;}
+#fullPage .page{width: 100%;height: 100%;background: #bbb;
+    &.page1 .content{width: 500px;height: 400px;border: 5px solid #ddd;}
+}
 #fullPage .page:nth-of-type(1){background: #182327}
 #fullPage .page:nth-of-type(2){background: #132C33}
 #fullPage .page:nth-of-type(3){background: #F9F9F9}
 #fullPage .page:nth-of-type(4){background: #015E7F}
 #fullPage .page:nth-of-type(5){background: #2D363F}
+
 </style>

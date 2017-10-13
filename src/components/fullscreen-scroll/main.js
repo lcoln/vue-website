@@ -17,7 +17,7 @@ var listen = function(el, ev, fn, capture){
     }
 }
 
-var remove = function(el, ev, fn, capture){
+var removeListen = function(el, ev, fn, capture){
     if(window.removeEventListener){
         el.removeEventListener(ev, fn, capture)
     }else if(window.attachEvent){
@@ -48,14 +48,17 @@ var watch = function(obj, prop, cb){
  */
 var observable = function(obj, prop, cb){
     var type = Object.prototype.toString.call(prop)
+    var props = []
     if(type === '[object String]'){
-        watch(obj, prop, cb)
+        props = [prop]
     }else if(type === '[object Function]'){
-        var keys = Object.keys(obj)
+        props = Object.keys(obj)
         cb = prop
-        for(var i = 0;i < keys.length;i++){
-            watch(obj, keys[i], cb)
-        }
+    }else if(type === '[object Array]'){
+        props = prop
+    }
+    for(var i = 0;i < props.length;i++){
+        watch(obj, props[i], cb)
     }
 
 }
@@ -158,7 +161,7 @@ class scroll{
 
 
 var newScroll = new scroll()
-console.log(newScroll);
+
 observable(newScroll, 'curPage', function(index){
     var btnGroup = document.getElementById('ui-fullpage-btn-' + pageNums),
         span = btnGroup.childNodes
