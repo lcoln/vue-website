@@ -23,6 +23,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'common': resolve('static/js/common.js')
     }
   },
   module: {
@@ -63,7 +64,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'url-loader',
+        loader: 'sass-loader',
         options: {
           name: utils.extractTextPlugin('css!sass')
         }

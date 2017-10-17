@@ -1,67 +1,14 @@
 /**
  *
- * @authors linteng (875482941@qq.com)
+ * @authors Lincoln (875482941@qq.com)
  * @date    2017-09-07 19:53:18
  */
 
 'use strict'
 
+import * as common from "common";
+
 var pageNums = 0
-var listen = function(el, ev, fn, capture){
-    if(window.addEventListener){
-        el.addEventListener(ev, fn, capture)
-    }else if(window.attachEvent){
-        el.attachEvent('on' + ev, fn, capture)
-    }else{
-        el['on' + ev] = fn
-    }
-}
-
-var removeListen = function(el, ev, fn, capture){
-    if(window.removeEventListener){
-        el.removeEventListener(ev, fn, capture)
-    }else if(window.attachEvent){
-        el.attachEvent('on' + ev, fn, capture)
-    }
-}
-
-var watch = function(obj, prop, cb){
-    var oldVal = ''
-    if(prop in obj){
-        oldVal = obj[prop]
-    }
-    Object.defineProperty(obj, prop, {
-        get: function(){
-            return oldVal
-        },
-        set: function(newVal){
-            oldVal = newVal
-            cb && cb(newVal)
-        }
-    })
-}
-
-/**
- * [监听对象所有属性变化]
- * @param  {Object}   obj [要监听属性的对象]
- * @param  {Function} cb  [description]
- */
-var observable = function(obj, prop, cb){
-    var type = Object.prototype.toString.call(prop)
-    var props = []
-    if(type === '[object String]'){
-        props = [prop]
-    }else if(type === '[object Function]'){
-        props = Object.keys(obj)
-        cb = prop
-    }else if(type === '[object Array]'){
-        props = prop
-    }
-    for(var i = 0;i < props.length;i++){
-        watch(obj, props[i], cb)
-    }
-
-}
 
 class scroll{
 
@@ -80,7 +27,7 @@ class scroll{
             direction = /Firefox/i.test(navigator.userAgent) ? "detail": "deltaY",
             now = Date.now()
             var _this = this
-            listen(this.el, mouseWheelEv, function(ev){
+            common.listenEvent(this.el, mouseWheelEv, function(ev){
                 if(Date.now() - now > 1000){
                     if(ev[direction] > 0){
                         if(_this.curPage + 1 < childDom.length){
@@ -101,7 +48,7 @@ class scroll{
                 }
             })
 
-            listen(window, 'resize', function(){
+            common.listenEvent(window, 'resize', function(){
 
                 _this.curHeight = (window.getComputedStyle ? (window.getComputedStyle(_this.el).height).replace('px', '') : _this.el.offsetHeight) >> 0
                 container.style.transition = '0s'
@@ -134,7 +81,7 @@ class scroll{
                 btn.style.transform = 'scale(1.5)'
             }
             ;(function(i){
-                listen(btn, 'click', function(){
+                common.listenEvent(btn, 'click', function(){
                     _this.curPage = i
                     container.style.transform = 'translate(0px, ' + -_this.curHeight * _this.curPage + 'px)'
                 })
@@ -160,9 +107,9 @@ class scroll{
 }
 
 
-var newScroll = new scroll()
+var fullpage = new scroll()
 
-observable(newScroll, 'curPage', function(index){
+common.observable(fullpage, 'curPage', function(index){
     var btnGroup = document.getElementById('ui-fullpage-btn-' + pageNums),
         span = btnGroup.childNodes
 
@@ -178,4 +125,4 @@ observable(newScroll, 'curPage', function(index){
 
 })
 
-export default newScroll
+export {fullpage}

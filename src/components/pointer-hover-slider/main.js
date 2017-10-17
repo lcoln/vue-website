@@ -1,66 +1,14 @@
 /**
  *
- * @authors linteng (875482941@qq.com)
+ * @authors Lincoln (875482941@qq.com)
  * @date    2017-09-07 19:53:18
  */
 'use strict'
 
+import * as common from "common";
+
 var pageNums = 0
-var listen = function(el, ev, fn, capture){
-    if(window.addEventListener){
-        el.addEventListener(ev, fn, capture)
-    }else if(window.attachEvent){
-        el.attachEvent('on' + ev, fn, capture)
-    }else{
-        el['on' + ev] = fn
-    }
-}
 
-var removeListen = function(el, ev, fn, capture){
-    if(window.removeEventListener){
-        el.removeEventListener(ev, fn, capture)
-    }else if(window.attachEvent){
-        el.attachEvent('on' + ev, fn, capture)
-    }
-}
-
-var watch = function(obj, prop, cb){
-    var oldVal = ''
-    if(prop in obj){
-        oldVal = obj[prop]
-    }
-    Object.defineProperty(obj, prop, {
-        get: function(){
-            return oldVal
-        },
-        set: function(newVal){
-            oldVal = newVal
-            cb && cb(newVal)
-        }
-    })
-}
-
-/**
- * [监听对象所有属性变化]
- * @param  {Object}   obj [要监听属性的对象]
- * @param  {Function} cb  [description]
- */
-var observable = function(obj, prop, cb){
-    var type = Object.prototype.toString.call(prop)
-    var props = []
-    if(type === '[object String]'){
-        props = [prop]
-    }else if(type === '[object Function]'){
-        props = Object.keys(obj)
-        cb = prop
-    }else if(type === '[object Array]'){
-        props = prop
-    }
-    for(var i = 0;i < props.length;i++){
-        watch(obj, props[i], cb)
-    }
-
-}
 
 class hover{
     constructor(){
@@ -100,7 +48,7 @@ class hover{
             var movex = 0
             var movey = 0
 
-            listen(container, 'mousemove', function(ev){
+            common.listenEvent(container, 'mousemove', function(ev){
 
                 movey = ev.offsetX
                 if(movey < halfw){
@@ -120,12 +68,12 @@ class hover{
 
             })
 
-            listen(parentDom, 'mouseenter', function(){
+            common.listenEvent(parentDom, 'mouseenter', function(){
                 container.style['box-shadow'] = opt.shadow
                 console.log('test');
             })
 
-            listen(parentDom, 'mouseleave', function(){
+            common.listenEvent(parentDom, 'mouseleave', function(){
                 container.style['box-shadow'] = ''
                 container.style.transform = 'rotateX(' + 0 + 'deg) rotateY(' + 0 + 'deg)'
             })
@@ -136,4 +84,4 @@ class hover{
 
 var hoverSlider = new hover()
 
-export default hoverSlider
+export {hoverSlider}

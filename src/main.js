@@ -9,5 +9,8 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   template: '<App/>',
-  components: { App }
+  components: { App },
+  data: {
+    bgColor:['#c90','#c09','#09c','#9c0']
+  }
 })
