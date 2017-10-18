@@ -1,42 +1,35 @@
 <template>
-  <div  @wheel="wheelEvent($event)">
-      <transition-group :name="name" tag="div">
-        <div v-for="(page,index) in pages" :key="index" class="block"
-        :style="{'background-color':bgColor&&bgColor[index]?bgColor[index]:baseBgc}">
-        </div>
-      </transition-group>
-  </div>
+    <div>
+        <section v-for="(page, index) in pages" :key="index">
+            <slot v-for="slotIndex in pages" :name="'page' + slotIndex"></slot>
+        </section>
+    </div>
 </template>
 
 <script>
     export default {
-      props: {
-        pages:{
-          type: Number,
-          required: true
+        props: {
+            amount: {
+                type: Number,
+                require: true
+            }
         },
-        bgColor:{
-          type: Array
+        data() {
+            return {
+                name: 'down',
+                pages: new Array(this.amount)
+            }
         },
-        baseBgc:{
-          default: '#fff'
+        methods: {
+            wheelEvent(e) {
+                if (e.deltaY > 0) {
+                    this.name = 'down'
+                }
+                if (e.deltaY < 0) {
+                    this.name = 'up'
+                }
+            }
         }
-      },
-      data() {
-        return {
-          name: 'down'
-        }
-      },
-      methods: {
-        wheelEvent(e) {
-          if (e.deltaY > 0) {
-            this.name = 'down'
-          }
-          if (e.deltaY < 0) {
-            this.name = 'up'
-          }
-        }
-      }
     }
 </script>
 

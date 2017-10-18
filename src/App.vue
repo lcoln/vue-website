@@ -11,7 +11,11 @@
         </div>
     </div> -->
     <div>
-      <fullpage :pages="5" bg-color="bgColor"></fullpage>
+        <fullpage :amount="5">
+            <template slot="page4">
+                22222
+            </template>
+        </fullpage>
     </div>
 </template>
 
