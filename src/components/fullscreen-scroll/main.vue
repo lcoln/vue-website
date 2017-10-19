@@ -1,84 +1,59 @@
 <template>
-    <div>
-        <section v-for="(page, index) in pages" :key="index">
-            <slot v-for="slotIndex in pages" :name="'page' + slotIndex"></slot>
-        </section>
+    <div class="ui-fullpage" @wheel="wheelEvent">
+        <div class="ui-fullpage-container" :style="{transform: `translateY(${-100 * curIndex}%)`}">
+            <section class="ui-fullpage-box" v-for="(page, index) in pages" :key="index" :style="{background: bgColor[index] ? bgColor[index] : bgBase}">
+                <slot :name="`page${index + 1}`"></slot>
+            </section>
+        </div>
     </div>
 </template>
 
 <script>
+    var now = Date.now()
     export default {
         props: {
             amount: {
                 type: Number,
                 require: true
+            },
+            bgColor: {
+                type: Array
+            },
+            bgBase: {
+                default: '#fff'
             }
         },
         data() {
             return {
-                name: 'down',
-                pages: new Array(this.amount)
+                pages: new Array(this.amount),
+                curIndex: 0
             }
         },
         methods: {
             wheelEvent(e) {
+                if(Date.now() - now < 1000)
+                    return
+
+                now = Date.now()
+
                 if (e.deltaY > 0) {
-                    this.name = 'down'
+                    if(this.curIndex < this.pages.length - 1)
+                        this.curIndex += 1
                 }
                 if (e.deltaY < 0) {
-                    this.name = 'up'
+                    if(this.curIndex > 0)
+                        this.curIndex -= 1
                 }
             }
         }
     }
 </script>
 
-<style>
-  #app {
-    height: 100%;
-    width: 100%;
-  }
-
-  .block {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-
-  .down-enter-active {
-    transition: all 1s ease;
-    transform: translateY(0);
-  }
-
-  .down-leave-active {
-    transition: all 1s ease;
-    transform: translateY(-100%);
-  }
-
-  .down-enter {
-    transform: translateY(100%);
-  }
-
-  .down-leave {
-    transform: translateY(0);
-  }
-
-  .up-enter-active {
-    transition: all 1s ease;
-    transform: translateY(0);
-  }
-
-  .up-leave-active {
-    transition: all 1s ease;
-    transform: translateY(100%);
-  }
-
-  .up-enter {
-    transform: translateY(-100%);
-  }
-
-  .up-leave {
-    transform: translateY(0);
-  }
+<style lang="scss" type="text/css" scoped>
+    .ui-fullpage{width: 100%;height: 100%;overflow: hidden;
+        .ui-fullpage-container{width: 100%;height: 100%;transition: .6s ease;
+            .ui-fullpage-box{width: 100%;height: 100%;}
+        }
+    }
 
 </style>
