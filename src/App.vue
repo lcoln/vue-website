@@ -2,7 +2,7 @@
     <div class="website-index">
         <fullpage :amount="5" :bg-color="bgColor">
             <template slot="page1">
-                <div class="constructor">
+                <div class="constructor" id="constructor">
                     <div class="box">
                         <h1>Hello</h1>
                         <span>I'm linteng</span>
@@ -40,6 +40,8 @@
                         </div>
                     </div>
                 </div>
+                <img class="coding" src="/static/images/hello.gif">
+                <div class="page1-bg"></div>
             </template>
         </fullpage>
     </div>
@@ -48,7 +50,6 @@
 <script>
 import Hello from './components/Hello'
 import vue from 'vue'
-// import {fullpage} from './components/fullscreen-scroll/main.js'
 import fullpage from './components/fullscreen-scroll/main.vue'
 import {hoverSlider} from './components/pointer-hover-slider/main.js'
 
@@ -63,7 +64,8 @@ export default {
   mounted: function(){
     // fullpage.init('fullPage', 'page', '.4')
     // var hover = (require('./components/pointer-hover-slider/main.js'))
-    // console.log(fullpage);
+    console.log(hoverSlider);
+    hoverSlider.in('constructor')
   },
   components: {
     fullpage
@@ -80,7 +82,7 @@ a{text-decoration: none;}
 #app {width: 100%;height: 100%;font-family: 'Avenir', Helvetica, Arial, sans-serif;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
 }
 .website-index{width: 100%;height: 100%;
-    .constructor{position: absolute;width: 500px;height: 300px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background: #1d2d30;box-shadow: 0 0 10px #1d2d30;text-align: center;animation: hide-show 5s linear 2s;animation-fill-mode: forwards;opacity: 0;
+    .constructor{position: absolute;width: 500px;height: 300px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;text-align: center;animation: hide-show 5s ease-in-out 4s;animation-fill-mode: forwards;opacity: 0;z-index: 2000;
         .box{position: absolute;left: 0;top: 0;right: 0;bottom: 0;width: 50%;height: 90%;margin: auto;
             h1{margin: 20px 0 10px;color: #ddd;font-size: 60px;}
             span{display: block;margin: 10px;color: #bbb;font-size: 20px;}
@@ -108,11 +110,18 @@ a{text-decoration: none;}
 
         }
     }
+    .coding{width: 100%;height: 100%;animation: show-hide 5s linear 4s;animation-fill-mode: forwards;opacity: 1;z-index: 1;}
+    .page1-bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(24, 35, 39, .8);animation: hide-show 5s linear 4s;animation-fill-mode: forwards;opacity: 0;z-index: 1;}
 }
 
 @keyframes hide-show{
     0%{opacity: 0;-webkit-filter: blur(26px);}
     100%{opacity: 1;-webkit-filter: blur(0px);}
+}
+
+@keyframes show-hide{
+    0%{opacity: 1;-webkit-filter: blur(0);}
+    100%{-webkit-filter: blur(5px);}
 }
 
 

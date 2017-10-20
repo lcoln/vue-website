@@ -70,7 +70,6 @@ class hover{
 
             common.listenEvent(parentDom, 'mouseenter', function(){
                 container.style['box-shadow'] = opt.shadow
-                console.log('test');
             })
 
             common.listenEvent(parentDom, 'mouseleave', function(){
