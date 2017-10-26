@@ -43,6 +43,9 @@
                 <img class="coding" src="/static/images/hello.gif">
                 <div class="page1-bg"></div>
             </template>
+            <template slot="page2">
+                <waterfall :amount="5" :waterfall-style="{width: '80%', margin: '0 auto'}" :page-style="{width: '25%', border: '1px solid #ddd'}"></waterfall>
+            </template>
             <template slot="ui-fullpage-tab">
                 <div class="website-index-tab-group">
                     <span v-for="(page, index) in tabText" :class="{'tab-act': curIndex == index}" class="website-index-tab" @click="go(index >> 0)">
@@ -59,13 +62,14 @@
 import Hello from './components/Hello'
 import vue from 'vue'
 import fullpage from './components/fullscreen-scroll/main.vue'
+import waterfall from './components/waterfall/main.vue'
 import {hoverSlider} from './components/pointer-hover-slider/main.js'
 
 export default {
     name: 'app',
     data () {
         return {
-            bgColor: ['#182327', '#F9F9F9', '#132C33', '#556270', '#2D363F'],
+            bgColor: ['#182327', '#202834', '#b2ced7', '#556270', '#2D363F'],
             tabText: ['intruction', 'skill', 'experience', 'project', 'article'],
             curIndex: 0
         }
@@ -89,7 +93,8 @@ export default {
         })
     },
     components: {
-        fullpage
+        fullpage,
+        waterfall
     },
 }
 </script>
@@ -132,7 +137,7 @@ export default {
             }
         }
         .website-index-tab-group{position: absolute;right: 10px;top: 50%;margin-top: -75px;width: 100px;height: 130px;color: #fff;text-align: center;z-index: 2000;}
-        .website-index-tab{position: relative;display: block;width: 100%;height: 20px;margin: 5px 0;transition: .4s;animation: tab-hide-show 1s ease-in-out;animation-fill-mode: both;cursor: pointer;color: #666;}
+        .website-index-tab{position: relative;display: block;width: 100%;height: 20px;margin: 5px 0;transition: .4s;animation: tab-hide-show 1s ease-in-out;animation-fill-mode: both;cursor: pointer;color: #666;font-weight: bold;}
         .website-index-tab:hover{color: #fff;}
         .website-index-tab:nth-of-type(1){animation-delay: 8s;}
         .website-index-tab:nth-of-type(2){animation-delay: 8.5s;}
