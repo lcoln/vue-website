@@ -1,8 +1,8 @@
 <template>
     <div class="ui-waterfall" :style="waterfallStyle">
-        <div class="ui-waterfall-container ui-fn-cl">
-            <section class="ui-waterfall-box ui-fn-fl" v-for="(page, index) in pages" :style="pagestyle[index]">
-                <slot :name="`page${index + 1}`"></slot>
+        <div class="ui-waterfall-container ui-fn-cl" ref="ui-waterfall-container">
+            <section class="ui-waterfall-box ui-fn-fl" v-for="(page, index) in pages" ref="ui-waterfall-box" :style="pagestyle[index]">
+                <slot :name="`waterfallPage${index + 1}`"></slot>
             </section>
         </div>
 
@@ -10,6 +10,45 @@
 </template>
 
 <script>
+
+    import vue from 'vue'
+    import * as common from "common";
+
+
+    function setStyle(vm){
+
+        return new Promise((resolve, reject) => {
+            let container = vm.$refs['ui-waterfall-container']
+            let containerw = container.offsetWidth
+            let box = vm.$refs['ui-waterfall-box']
+            let boxMarginLeft = box[0].style.marginLeft.replace('px', '') >> 0
+            let boxMarginRight = box[0].style.marginRight.replace('px', '') >> 0
+            let boxMarginTop = box[0].style.marginTop.replace('px', '') >> 0
+            let boxMarginBottom = box[0].style.marginBottom.replace('px', '') >> 0
+
+            let boxw = box[0].offsetWidth + boxMarginLeft + boxMarginRight
+            let maxColumLen = Math.floor(containerw / boxw)
+            for(let i = 0;i < box.length;i++){
+                let margin = boxMarginTop + boxMarginBottom
+
+                let top = 0
+                let left = boxw * (i % maxColumLen) + 'px'
+
+                if(i + 1 > maxColumLen){
+                    if(i - maxColumLen < maxColumLen){
+                        top = box[i - maxColumLen].offsetHeight + margin + 'px'
+                        // console.log(box[i - maxColumLen]);
+                    }else{
+                        let curBox = box[i - maxColumLen]
+                        top = (curBox.style.transform.split(',')[1].replace('px)', '') >> 0) + curBox.offsetHeight + margin + 'px'
+                    }
+                }
+
+                box[i].style.cssText += `transform: translate(${left},${top})`
+            }
+            resolve()
+        });
+    }
 
     export default {
         props: {
@@ -29,7 +68,9 @@
                 type: Object,
                 default(){
                     return {
-                        width: '25%'
+                        position: 'absolute',
+                        width: '200px',
+                        border: '1px solid #ddd'
                     }
                 }
             },
@@ -46,30 +87,37 @@
         data() {
             return {
                 pages: new Array(this.amount),
-                curIndex: 0
+                curIndex: 0,
+                pagestyle: []
             }
         },
-        computed:{
-            pagestyle: function(){
-                let result = []
-                let _this = this
+        beforeMount: function(){
 
-                /*let result = this.pages.reduce((item, next, i) => {
-                    _this.pageStyle.height = Math.random() * (_this.height[1] - _this.height[0]) + _this.height[0] + 'px'
-                    item.push(_this.pageStyle)
-                    console.log(item);
-                    return item
-                }, [])*/
-
-                for(let i = 0;i < this.amount;i++){
-                    let tmp = JSON.parse(JSON.stringify(_this.pageStyle))
-                    tmp.height = Math.random() * (_this.height[1] - _this.height[0]) + _this.height[0] + 'px'
-                    result[i] = tmp
-                    console.log(result[i]);
-                }
-                console.log(result);
-                return result
+            for(let i = 0;i < this.amount;i++){
+                let tmp = JSON.parse(JSON.stringify(this.pageStyle))
+                tmp.height = Math.random() * (this.height[1] - this.height[0]) + this.height[0] + 'px'
+                tmp.position = 'absolute'
+                tmp.transition = '.4s'
+                this.pagestyle[i] = tmp
             }
+        },
+        mounted: function(){
+            let _this = this
+            vue.nextTick(async function(){
+
+                await setStyle(_this)
+
+                common.listenEvent(window, 'resize', function(){
+                    setStyle(_this)
+                })
+            })
+            // console.log(box);
+            // console.log(maxColumLen);
+
+
+        },
+        computed:{
+
         },
         methods: {
 
@@ -82,8 +130,8 @@
 
 <style lang="scss" type="text/css" scoped>
 
-    .ui-waterfall{width: 100%;height: 100%;margin: 0 auto;
-        .ui-waterfall-container{width: 100%;height: 100%;
+    .ui-waterfall{width: 100%;height: 100%;
+        .ui-waterfall-container{position: relative;width: 100%;height: 100%;
             .ui-waterfall-box{}
         }
     }
