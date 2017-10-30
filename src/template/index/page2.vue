@@ -1,15 +1,18 @@
 <template>
     <section class="index2">
-        <waterfall :amount="8" :waterfall-style="{width: '85%', 'margin-left': '1%', overflow: 'hidden'}" :page-style="{width: '250px', margin: '10px', border: '1px solid rgb(209, 108, 131)'}" :height="[250, 350]">
+        <waterfall :amount="8" :waterfall-style="{width: '85%', 'margin-left': '1%', overflow: 'hidden'}" :page-style="{width: '250px', margin: '10px', border: '1px solid rgb(209, 108, 131)', background: '#202834'}" :height="[250, 350]">
             <template v-for="(item, i) in content" :slot="`waterfallPage${i + 1}`">
-                <div class="title">
-                    <img :src="item.logo">
-                    <div class="percent"></div>
-                </div>
-                <div class="content">
-                    <p class="detail" v-for="(it, i) in item.include" :style="{height: `${100 / item.include.length}%`, transform: `${i < (item.include.length - 1) ? `translate(0, calc(${(item.include.length - i - 1) * 100}% - ${30 * (item.include.length - i - 1)}px))` : 'none'}`}">
-                        <span class="detail-title">{{it}}</span>
-                    </p>
+                <div class="card">
+                    <div class="title">
+                        <img :src="item.logo">
+                        <div class="percent"></div>
+                    </div>
+                    <div class="content">
+                        <p class="detail" v-for="(it, i) in item.include" :style="{height: `${100 / item.include.length}%`, transform: `${i < (item.include.length - 1) ? `translate(0, calc(${(item.include.length - i - 1) * 100}% - ${30 * (item.include.length - i - 1)}px))` : 'none'}`}" @mouseenter="showDetail(item, i, $event)" @mouseleave="hideDetail(item, i, $event)">
+                            <span class="detail-title">{{it}}</span>
+                        </p>
+                    </div>
+
                 </div>
             </template>
         </waterfall>
@@ -19,6 +22,7 @@
 <script>
 import waterfall from '../../components/waterfall/main.vue'
 
+let tmpStyle = ''
 export default {
     data(){
         return {
@@ -54,7 +58,7 @@ export default {
                 logo: '/static/images/mysql.png'
             },{
                 title: '服务端',
-                include: ['mysql', 'nginx', 'http2'],
+                include: ['nginx', 'http2'],
                 per: '44%',
                 logo: '/static/images/http2.png'
             },{
@@ -63,6 +67,21 @@ export default {
                 per: '56%',
                 logo: '/static/images/ps.png'
             }]
+        }
+    },
+    methods: {
+        showDetail: function(item, i, ev){
+            let len = item.include.length
+            if(i == len - 1)
+                return
+
+            tmpStyle = ev.target.style.transform
+            ev.target.style.transform = `translate(0, calc(${(len - 2 - i) * 100}% - ${(len - 2 - i) * 30}px)`
+        },
+        hideDetail: function(item, i, ev){
+            if(i == item.include.length - 1)
+                return
+            ev.target.style.transform = tmpStyle
         }
     },
     components: {
@@ -74,16 +93,20 @@ export default {
 <style lang="scss" type="text/css" scoped>
 
     .index2{width: 100%;height: 100%;
-        .title{position: relative;height: 40%;background: rgba(65, 78, 96, 0.78);color: #fff;font-size: 14px;text-align: center;
-            img{width: 100%;height: 100%;object-fit: cover;}
-            .percent{position: absolute;bottom: -25%;left: 5%;width: 80px;height: 80px;border-radius: 50%;background: #fff;}
-        }
-        .content{height: 60%;overflow: hidden;
-            .detail{position: relative;height: 25px;width: 100%;padding-left: 10px;box-shadow: 0 0px 5px #202834;color: #ddd;line-height: 25px;font-size: 12px;background: #d16c83;transition: .4s;
-                .detail-title{display: block;height: 30px;}
+        .card{width: 100%;height: 100%;transition: .4s;
+            .title{position: relative;height: 40%;background: rgba(65, 78, 96, 0.78);color: #fff;font-size: 14px;text-align: center;
+                img{width: 100%;height: 100%;object-fit: cover;}
+                .percent{position: absolute;bottom: -25%;left: 5%;width: 80px;height: 80px;border-radius: 50%;box-shadow: 0 2px 2px #000;background: #fff;z-index: 5;}
             }
-            .detail:hover{transform: translate(0, 0);}
+            .content{height: 60%;overflow: hidden;
+                .detail{position: relative;height: 25px;width: 100%;padding-left: 10px;box-shadow: 0 0px 5px #202834;color: #ddd;line-height: 25px;font-size: 12px;background: #d16c83;transition: .4s;
+                    .detail-title{display: block;height: 30px;}
+                }
+                .detail:hover{transform: translate(0, 0);}
+            }
+
         }
+        .card:hover{border: 2px solid #d16c83;padding: 5px;}
     }
 
 </style>
