@@ -9,8 +9,5 @@ import App from './App'
 new Vue({
   el: '#app',
   template: '<App/>',
-  components: { App },
-  data: {
-    bgColor:['#c90','#c09','#09c','#9c0']
-  }
+  components: { App }
 })

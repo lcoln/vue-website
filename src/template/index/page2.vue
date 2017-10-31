@@ -92,6 +92,9 @@ export default {
 
 <style lang="scss" type="text/css" scoped>
 
+    /* @import "static/sass/mixin.scss";
+    @import "logos.png";
+    @include all-logos-sprites; */
     .index2{width: 100%;height: 100%;
         .card{width: 100%;height: 100%;transition: .4s;
             .title{position: relative;height: 40%;background: rgba(65, 78, 96, 0.78);color: #fff;font-size: 14px;text-align: center;
@@ -100,7 +103,9 @@ export default {
             }
             .content{height: 60%;overflow: hidden;
                 .detail{position: relative;height: 25px;width: 100%;padding-left: 10px;box-shadow: 0 0px 5px #202834;color: #ddd;line-height: 25px;font-size: 12px;background: #d16c83;transition: .4s;
-                    .detail-title{display: block;height: 30px;}
+                    .detail-title{display: block;height: 30px;
+                        .a{display: block;}
+                    }
                 }
                 .detail:hover{transform: translate(0, 0);}
             }

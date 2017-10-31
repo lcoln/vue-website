@@ -58,7 +58,7 @@ export default {
 
     .index1{width: 100%;height: 100%;
         .constructor{position: absolute;width: 500px;height: 300px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;text-align: center;animation: hide-show 4s ease-in-out 4s;animation-fill-mode: forwards;opacity: 0;z-index: 2000;
-            .box{position: absolute;left: 0;top: 0;right: 0;bottom: 0;width: 50%;height: 90%;margin: auto;
+            .box{position: absolute;left: 0;top: 0;right: 0;bottom: 0;width: 50%;height: 90%;margin: auto;padding: 6% 0;
                 h1{margin-bottom: 2%;color: #ddd;font-size: 60px;}
                 span{display: block;margin-bottom: 4%;color: #bbb;font-size: 20px;}
                 .line{position: relative;width: 100%;height: 1px;margin: 0;background: #bbb;}
