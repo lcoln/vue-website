@@ -3,6 +3,7 @@
         <fullpage :amount="5" :bg-color="bgColor" :cur-page="curIndex" @on-curIndex-change="changeCurIndex">
             <page1 slot="page1"></page1>
             <page2 slot="page2"></page2>
+            <page3 slot="page3"></page3>
             <template slot="ui-fullpage-tab">
                 <div class="website-index-tab-group">
                     <span v-for="(page, index) in tabText" :class="{'tab-act': curIndex == index}" class="website-index-tab" @click="go(index >> 0)">
@@ -21,6 +22,7 @@ import vue from 'vue'
 import fullpage from './components/fullscreen-scroll/main.vue'
 import page1 from './template/index/page1.vue'
 import page2 from './template/index/page2.vue'
+import page3 from './template/index/page3.vue'
 
 export default {
     name: 'app',
@@ -47,7 +49,8 @@ export default {
     components: {
         fullpage,
         page1,
-        page2
+        page2,
+        page3
     },
 }
 </script>
