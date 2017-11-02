@@ -37,6 +37,7 @@
         },
         methods: {
             wheelEvent(e) {
+                console.log(document.documentElement.clientHeight , document.documentElement.offsetHeight);
                 if(Date.now() - now < 1000)
                     return
 
