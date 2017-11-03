@@ -73,7 +73,7 @@ export default {
         }
     },
     mounted () {
-        console.log(percent);
+
     },
     methods: {
         showDetail: function(item, i, ev){
@@ -101,7 +101,7 @@ export default {
 
 <style lang="scss" type="text/css" scoped>
 
-    .index2{width: 100%;height: 100%;
+    .index2{width: 100%;height: 100%;overflow: auto;
         .card{width: 100%;height: 100%;transition: .4s;
             .title{position: relative;height: 40%;background: rgba(65, 78, 96, 0.78);color: #fff;font-size: 14px;text-align: center;
                 img{width: 100%;height: 100%;object-fit: cover;}

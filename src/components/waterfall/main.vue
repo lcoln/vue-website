@@ -37,7 +37,6 @@
                 if(i + 1 > maxColumLen){
                     if(i - maxColumLen < maxColumLen){
                         top = box[i - maxColumLen].offsetHeight + margin + 'px'
-                        // console.log(box[i - maxColumLen]);
                     }else{
                         let curBox = box[i - maxColumLen]
                         top = (curBox.style.transform.split(',')[1].replace('px)', '') >> 0) + curBox.offsetHeight + margin + 'px'
@@ -111,8 +110,6 @@
                     setStyle(_this)
                 })
             })
-            // console.log(box);
-            // console.log(maxColumLen);
 
 
         },

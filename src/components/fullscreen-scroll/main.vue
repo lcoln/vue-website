@@ -37,20 +37,33 @@
         },
         methods: {
             wheelEvent(e) {
-                console.log(document.documentElement.clientHeight , document.documentElement.offsetHeight);
+                let curIndex = this.curIndex
+                let dom = document.querySelector(`.index${curIndex + 1}`)
+                if(dom){
+                    if(dom.scrollHeight - dom.clientHeight > 3){
+                        if(dom.scrollTop < dom.scrollHeight - dom.clientHeight && e.deltaY > 0){
+                            return
+                        }
+
+                        if(dom.scrollTop > 0 && e.deltaY < 0){
+                            return
+                        }
+                    }
+                }
                 if(Date.now() - now < 1000)
                     return
 
                 now = Date.now()
 
                 if (e.deltaY > 0) {
-                    if(this.curIndex < this.pages.length - 1)
-                        this.curIndex += 1
+                    if(curIndex < this.pages.length - 1)
+                        curIndex += 1
                 }
                 if (e.deltaY < 0) {
-                    if(this.curIndex > 0)
-                        this.curIndex -= 1
+                    if(curIndex > 0)
+                        curIndex -= 1
                 }
+                this.curIndex = curIndex
             },
             jump(page) {
                 this.curIndex = page
