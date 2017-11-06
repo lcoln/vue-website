@@ -1,6 +1,6 @@
 <template>
     <section class="index2">
-        <waterfall :amount="8" :waterfall-style="{width: '85%', 'margin-left': '1%'}" :page-style="{width: '250px', margin: '10px', border: '1px solid rgb(209, 108, 131)', background: '#202834'}" :height="[250, 350]">
+        <waterfall :amount="8" :page-style="{width: '250px', margin: '10px', border: '1px solid rgb(209, 108, 131)', background: '#202834'}" :height="[250, 350]">
             <template v-for="(item, i) in content" :slot="`waterfallPage${i + 1}`">
                 <div class="card">
                     <div class="title">
@@ -101,7 +101,8 @@ export default {
 
 <style lang="scss" type="text/css" scoped>
 
-    .index2{width: 100%;height: 100%;overflow: auto;
+    @import 'static/sass/mixin.scss';
+    .index2{position: relative;top: 50%;transform: translate(0, -50%);height: 700px;overflow: auto;margin: 0 auto;
         .card{width: 100%;height: 100%;transition: .4s;
             .title{position: relative;height: 40%;background: rgba(65, 78, 96, 0.78);color: #fff;font-size: 14px;text-align: center;
                 img{width: 100%;height: 100%;object-fit: cover;}
@@ -118,6 +119,22 @@ export default {
 
         }
         .card:hover{border: 2px solid #d16c83;padding: 5px;}
+
+        @include min-screen(1200px){
+            width: 1185px;
+        }
+
+        @include max-screen(1200px){
+            width: 850px;
+        }
+
+        @include max-screen(1080px){
+            width: 590px;
+        }
+
+        @include max-screen(850px){
+            width: 350px;
+        }
     }
 
 </style>

@@ -28,7 +28,7 @@ export default {
     name: 'app',
     data () {
         return {
-            bgColor: ['#182327', '#202834', '#b2ced7', '#556270', '#2D363F'],
+            bgColor: ['#182327', '#202834', '#2b3958', '#556270', '#2D363F'],
             tabText: ['intruction', 'skill', 'experience', 'project', 'article'],
 
             curIndex: 0
@@ -57,6 +57,7 @@ export default {
 
 <style lang="scss" type="text/css" scoped>
 
+    @import 'static/sass/mixin.scss';
     *{margin: 0;padding: 0}
     body,html{width: 100%;height: 100%;overflow: hidden;}
     a{text-decoration: none;}
@@ -65,7 +66,11 @@ export default {
     }
     .website-index{width: 100%;height: 100%;
 
-        .website-index-tab-group{position: absolute;right: 10px;top: 50%;margin-top: -75px;width: 100px;height: 130px;color: #fff;text-align: center;z-index: 2000;}
+        .website-index-tab-group{position: absolute;right: 2%;top: 50%;margin-top: -75px;width: 100px;height: 130px;color: #fff;text-align: center;z-index: 2000;
+            @include min-screen(1400px){
+                right: 5%;
+            }
+        }
         .website-index-tab{position: relative;display: block;width: 100%;height: 20px;margin: 5px 0;transition: .4s;animation: tab-hide-show 1s ease-in-out;animation-fill-mode: both;cursor: pointer;color: #666;font-weight: bold;}
         .website-index-tab:hover{color: #fff;}
         .website-index-tab:nth-of-type(1){animation-delay: 8s;}
