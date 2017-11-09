@@ -1,14 +1,18 @@
 <template>
     <div class="index3">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
         <p class="time">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="card">
+
+            </div>
+            <div class="card">
+
+            </div>
+            <div class="card">
+
+            </div>
+            <div class="card">
+
+            </div>
         </p>
     </div>
 </template>
@@ -36,30 +40,18 @@ export default {
 <style lang="scss" type="text/css" scoped>
 
     .index3{position: relative;width: 100%;height: 100%;
-        .card{position: absolute;height: 220px;width: 400px;background: #f30;
+
+        .card{position: relative;left: 0;right: 0;top: calc(5% + (90% - 880px) / 4);margin: auto;height: 220px;width: 400px;background: #f30;
+
+            span{position: relative;left: -4px;display: block;width: 10px;height: 10px;margin-left: -1px;border-radius: 50%;background: #ddd;transition: .4s;cursor: pointer;}
         }
 
-        @for $i from 1 through 4{
-            @if (#{$i} % 2) != 0 {
-                .card:nth-of-type(#{$i}){
-                    left: 55%
-                }
-            } @else{
-                .card:nth-of-type(#{$i}){
-                    left: 0
-                }
-            }
-        }
+        .card:nth-of-type(1){background: #fff;}
+        .card:nth-of-type(2){background: #ccc;}
+        .card:nth-of-type(3){background: #000;}
+        .card:nth-of-type(4){}
+
         .time{position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;height: 90%;width: 1px;background: #ddd;
-            @for $i from 1 through 4{
-                span:nth-of-type(#{$i}){
-                    top: $i * 20%
-                }
-                span:nth-of-type(#{$i}):hover{
-                    background: #000;
-                }
-            }
-            span{position: relative;left: -4px;display: block;width: 10px;height: 10px;margin-left: -1px;border-radius: 50%;background: #ddd;transition: .4s;cursor: pointer;}
         }
     }
 
