@@ -120,11 +120,11 @@ export default {
         }
         .card:hover{border: 2px solid #d16c83;padding: 5px;}
 
-        @include min-screen(1200px){
+        @include min-screen(1300px){
             width: 1185px;
         }
 
-        @include max-screen(1200px){
+        @include max-screen(1300px){
             width: 850px;
         }
 
