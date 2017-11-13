@@ -4,6 +4,7 @@
             <page1 slot="page1"></page1>
             <page2 slot="page2"></page2>
             <page3 slot="page3"></page3>
+            <page4 slot="page4"></page4>
             <template slot="ui-fullpage-tab">
                 <div class="website-index-tab-group">
                     <span v-for="(page, index) in tabText" :class="{'tab-act': curIndex == index}" class="website-index-tab" @click="go(index >> 0)">
@@ -23,12 +24,13 @@ import fullpage from './components/fullscreen-scroll/main.vue'
 import page1 from './template/index/page1.vue'
 import page2 from './template/index/page2.vue'
 import page3 from './template/index/page3.vue'
+import page4 from './template/index/page4.vue'
 
 export default {
     name: 'app',
     data () {
         return {
-            bgColor: ['#182327', '#202834', '#2b3958', '#556270', '#2D363F'],
+            bgColor: ['#182327', '#202834', '#2b3958', '#1B1521', '#2D363F'],
             tabText: ['intruction', 'skill', 'experience', 'project', 'article'],
 
             curIndex: 0
@@ -50,7 +52,8 @@ export default {
         fullpage,
         page1,
         page2,
-        page3
+        page3,
+        page4
     },
 }
 </script>

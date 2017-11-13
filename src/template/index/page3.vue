@@ -6,6 +6,12 @@
                 <div class="experience">
                     <!-- <img src="/static/images/school.gif"> -->
                     <p class="name">广东财经大学华商学院</p>
+                    <p class="content">2012至2013学年 优秀共青团员
+2013至2014学年 优秀团干部
+2013至2014学年 校优秀学生干部
+2015年网页设计大赛 团队一等奖
+2013.9～2014.9 广东财经大学华商学院信息工程系宣传部 部长
+2013.9~2014.9 广东财经大学华商学院信息工程系 助理班主任</p>
                     <span class="item">助理班主任</span>
                     <span class="item">部长</span>
                     <span class="item">网页设计大赛</span>
@@ -65,14 +71,15 @@ export default {
 
         .time{position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;height: 90%;
 
-            .card{position: relative;left: 0;right: 0;margin: auto;height: 25%;padding: 10px;width: 400px;
+            .card{position: relative;margin: auto;height: 25%;padding: 10px;width: 400px;
                 .experience{width: 100%;height: 100%;padding-top: 10px;border-radius: 5px;box-shadow: 2px 2px 10px rgb(32, 40, 52);
                     img{width: 100%;height: 100%;object-fit: cover;}
-                    .name{position: relative;display: inline-block;margin-top: -10px;bottom: 10px;right: 10px;padding: 10px;height: 40px;border-right: 5px solid #2b3958;border-bottom: 5px solid #2b3958;color: #fff;box-shadow: 0 0 10px #2b3958;}
+                    .name{position: relative;display: inline-block;margin-top: -10px;bottom: 10px;right: 10px;padding: 10px;height: 40px;border-right: 5px solid #2b3958;border-bottom: 4px solid #2b3958;color: #fff;box-shadow: 0 0 10px #2b3958;}
+                    .content{position: absolute;padding-left: 1em;width: 257px;color: #2b3958;white-space: pre-line;font-size: 14px;}
                     .item{float: right;position: relative;left: 10px;padding: 0 5px;display: block;height: 20px;margin-bottom: 10px;line-height: 20px;text-align: center;background: #333;font-size: 12px;color: #ddd;box-shadow: 0px 1px 2px #333;clear: both;}
                     .item:after{content: '';position: absolute;right: 0;border-right: 5px solid transparent;border-bottom: 5px solid transparent;border-left: 5px solid rgba(0, 0, 0, 0.5);border-top: 5px solid rgba(0, 0, 0, 0.5);bottom: -10px;}
                 }
-                .title{position: absolute;width: 160px;height: 30px;padding-left: 10px;top: 50%;margin-top: -15px;line-height: 30px;color: #fff;box-shadow: inset 0px 0 0 3px #fff;transition: .4s;}
+                .title{position: absolute;width: 150px;height: 30px;padding: 0 10px;top: 50%;margin-top: -15px;line-height: 30px;color: #fff;box-shadow: inset 0px 0 0 3px #fff;transition: .4s;}
             }
             .card:after{content: '';width: 40px;height: 40px;position: absolute;top: 50%;margin-top: -20px;border-radius: 50%;background: #fff;z-index: 3;}
             .card:before{content: '';width: 30px;height: 30px;position: absolute;top: 50%;margin-top: -15px;line-height: 30px;text-align: center;border-radius: 50%;font-size: 20px;color: #fff;z-index: 4;font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
@@ -98,8 +105,8 @@ export default {
             .card:nth-of-type(4) .title{background: #574C41;}
 
 
-            .card:nth-of-type(1) .title, .card:nth-of-type(3) .title{left: -215px;}
-            .card:nth-of-type(2) .title, .card:nth-of-type(4) .title{right: -215px;text-align: right;padding-right: 5px;}
+            .card:nth-of-type(1) .title, .card:nth-of-type(3) .title{left: -200px;}
+            .card:nth-of-type(2) .title, .card:nth-of-type(4) .title{right: -200px;text-align: right;}
 
             .card:nth-of-type(1), .card:nth-of-type(3){left: 50%;margin-left: 50px;}
             .card:nth-of-type(2), .card:nth-of-type(4){left: -250px;}
