@@ -1,10 +1,10 @@
 <template>
     <div class="website-index">
         <fullpage :amount="5" :bg-color="bgColor" :cur-page="curIndex" @on-curIndex-change="changeCurIndex">
-            <page1 slot="page1"></page1>
-            <page2 slot="page2"></page2>
-            <page3 slot="page3"></page3>
-            <page4 slot="page4"></page4>
+            <page1 slot="page1" v-if="curArr.includes(0)"></page1>
+            <page2 slot="page2" v-if="curArr.includes(1)"></page2>
+            <page3 slot="page3" v-if="curArr.includes(2)"></page3>
+            <page4 slot="page4" v-if="curArr.includes(3)"></page4>
             <template slot="ui-fullpage-tab">
                 <div class="website-index-tab-group">
                     <span v-for="(page, index) in tabText" :class="{'tab-act': curIndex == index}" class="website-index-tab" @click="go(index >> 0)">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Hello from './components/Hello'
+import store from 'store'
 import vue from 'vue'
 import fullpage from './components/fullscreen-scroll/main.vue'
 import page1 from './template/index/page1.vue'
@@ -32,7 +32,7 @@ export default {
         return {
             bgColor: ['#182327', '#202834', '#2b3958', '#1B1521', '#2D363F'],
             tabText: ['intruction', 'skill', 'experience', 'project', 'article'],
-
+            curArr: [0],
             curIndex: 0
         }
     },
@@ -42,11 +42,15 @@ export default {
         },
         changeCurIndex(v){
             this.curIndex = v
+            if(!this.curArr.includes(v))
+                this.curArr.push(v)
 
         }
     },
-    mounted: function(){
-
+    mounted: async function(){
+        store.state.approved = false
+        await store.dispatch('sleep', 11000)
+        store.state.approved = true
     },
     components: {
         fullpage,

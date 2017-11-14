@@ -1,17 +1,18 @@
 <template>
-    <div class="ui-fullpage" @wheel="wheelEvent" v-on:go="jump">
+    <div class="ui-fullpage" @wheel="wheelEvent">
         <div class="ui-fullpage-container" :style="{transform: `translateY(${-100 * curIndex}%)`}">
             <section class="ui-fullpage-box" v-for="(page, index) in pages" :key="index" :style="{background: bgColor[index] ? bgColor[index] : bgBase}">
                 <slot :name="`page${index + 1}`"></slot>
             </section>
         </div>
 
-        <slot name="ui-fullpage-tab" class="ui-fullpage-tab"></slot>
+        <slot name="ui-fullpage-tab" class="ui-fullpage-tab" v-on:go="jump"></slot>
 
     </div>
 </template>
 
 <script>
+    import store from 'store'
     var now = Date.now()
     export default {
         props: {
@@ -37,6 +38,8 @@
         },
         methods: {
             wheelEvent(e) {
+                if(!store.state.approved)
+                    return
                 let curIndex = this.curIndex
                 let dom = document.querySelector(`.index${curIndex + 1}`)
                 if(dom){

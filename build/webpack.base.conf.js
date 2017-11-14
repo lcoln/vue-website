@@ -25,7 +25,8 @@ module.exports = {
       '@': resolve('src'),
       'static': resolve('static'),
       'common': resolve('static/js/common.js'),
-      'mixin': resolve('static/sass/mixin.scss')
+      'mixin': resolve('static/sass/mixin.scss'),
+      'store': resolve('static/js/vuex/store.js')
     }
   },
   module: {
