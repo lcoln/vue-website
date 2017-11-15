@@ -9,6 +9,11 @@
         <div class="box">
             <section draggable="true" class="project" :class="{'cur': curPage == 1}" @click="choose(1)">
                 <img class="cover" src="/static/images/blog.png" />
+                <div class="content">
+                    <span>BLOG</span>
+                    <a class="iconfont" target="_blank" href="https://blog.cncoders.me">&#xe61d;: https://blog.cncoders.me</a>
+                    <a class="iconfont" target="_blank" href="https://github.com/lcoln/blog-vue">&#xe6b6;: https://github.com/lcoln/blog-vue</a>
+                </div>
                 <div class="bg"></div>
             </section>
             <section draggable="true" class="project" :class="{'cur': curPage == 2}" @click="choose(2)">
@@ -51,7 +56,7 @@ export default {
 
     @import 'static/sass/mixin.scss';
     .index4{position: relative;width: 100%;height: 100%;
-        .box{position: absolute;left: 0;top: 0;bottom: 0;right: 130px;margin: auto;width: 100%;height: 600px;text-align: center;letter-spacing: -4px;box-shadow: 0 0 15px #333;
+        .box{position: absolute;left: 0;top: 0;bottom: 0;right: 130px;margin: auto;width: 100%;height: 600px;text-align: center;box-shadow: 0 0 15px #333;
 
             @for $i from 1 through 3 {
                 .project:nth-of-type(#{$i}){left: ($i - 1) * 33.33%;animation-delay: #{$i / 3}s;z-index: 4 - $i}
@@ -59,8 +64,13 @@ export default {
 
             .project{position: absolute;width: 33.3999%;height: 600px;transition: .4s;
                 .cover{height: 100%;width: 100%;object-fit: cover;}
+                .content{position: absolute;bottom: 10px;width: 100%;padding: 5px 0 10px 15px;border-left: 10px solid #294f42;box-shadow: 4px 4px 5px #1c1c1c;z-index: 2;text-align: left;background: rgba(0, 0, 0, 0.6);color: #999;transition: .4s;opacity: 0;
+                    span{display: block;margin-left: -5px;margin-bottom: 10px;font-size: 20px;}
+                    a{display: block;margin-top: 5px;color: #999;text-decoration: none;}
+                }
                 &.cur{transform: scale(1.1);box-shadow: 0 0 5px #333;z-index: 4;transition: .4s;}
-                &.cur .bg{background: rgba(0, 0, 0, 0.2);}
+                &.cur .bg{background: rgba(0, 0, 0, 0.3);}
+                &.cur .content{margin-left: 20px;opacity: 1;}
             }
             .bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);transition: .4s;}
 
@@ -84,7 +94,7 @@ export default {
         .cover-bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;
             .cover-bg-item{position: absolute;height: 100%;width: 100%;object-fit: cover;-webkit-filter:blur(5px);opacity: 0;transition: .8s;}
             .show{opacity: 1;}
-            .bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);transition: .4s;}
+            .bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.7);transition: .4s;}
         }
     }
 
