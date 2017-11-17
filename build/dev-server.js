@@ -91,7 +91,7 @@ devMiddleware.waitUntilValid(() => {
 var chokidar = require('chokidar');
 chokidar.watch(path.resolve(process.cwd(), 'build/webpack.base.conf.js')).on('change', function(){
   process.send('restart'); //向父进程传递消息信号
-})
+}).on('error', error => {console.log(error);})
 
 var server = app.listen(port)
 
