@@ -19,13 +19,13 @@ const store = new vuex.Store({
         approved: true
     },
     mutations: {
-        isEmptyObj: (state, arg) => {
+        isEmptyObj (state, arg) {
             for(let i in arg.para){
                 return false
             }
             return true
         },
-        checkFields: function(state, arg){
+        checkFields (state, arg) {
             for(let i of arg.fields){
                 if(!arg.para[i] && arg.para[i] !== 0)
                     return i

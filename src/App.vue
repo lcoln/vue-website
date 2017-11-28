@@ -49,7 +49,7 @@ export default {
     },
     mounted: async function(){
         store.state.approved = false
-        await store.dispatch('sleep', 11000)
+        await store.dispatch('sleep', 8000)
         store.state.approved = true
     },
     components: {
@@ -80,11 +80,11 @@ export default {
         }
         .website-index-tab{position: relative;display: block;width: 100%;height: 20px;margin: 5px 0;transition: .4s;animation: tab-hide-show 1s ease-in-out;animation-fill-mode: both;cursor: pointer;color: #666;font-weight: bold;}
         .website-index-tab:hover{color: #fff;}
-        .website-index-tab:nth-of-type(1){animation-delay: 8s;}
-        .website-index-tab:nth-of-type(2){animation-delay: 8.5s;}
-        .website-index-tab:nth-of-type(3){animation-delay: 9s;}
-        .website-index-tab:nth-of-type(4){animation-delay: 9.5s;}
-        .website-index-tab:nth-of-type(5){animation-delay: 10s;}
+        .website-index-tab:nth-of-type(1){animation-delay: 6s;}
+        .website-index-tab:nth-of-type(2){animation-delay: 6.5s;}
+        .website-index-tab:nth-of-type(3){animation-delay: 7s;}
+        .website-index-tab:nth-of-type(4){animation-delay: 7.5s;}
+        .website-index-tab:nth-of-type(5){animation-delay: 8s;}
         .tab-act{color: #fff;}
         .tab-line{position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: block;width: 0;height: 0;margin: auto;transition: .4s;background: #fff;}
         .tab-line-act{width: 100%;height: 1px;}

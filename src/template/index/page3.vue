@@ -39,7 +39,9 @@
             </div>
             <div class="card">
                 <span class="title">...</span>
-                <div class="experience"></div>
+                <div class="experience">
+                    <p class="name">待续...</p>
+                </div>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
                         </div>
                         <i class="iconfont">&#xe944;</i>
                     </a>
-                    <a href="" class="item">
+                    <a href="mailto:875482941@qq.com" target="_blank" class="item">
                         <div class="half-circle">
                             <div class="left"></div>
                         </div>
@@ -26,7 +26,7 @@
                         </div>
                         <i class="iconfont">&#xe61c;</i>
                     </a>
-                    <a href="" class="item">
+                    <a href="https://github.com/lcoln" target="_blank" class="item">
                         <div class="half-circle">
                             <div class="left"></div>
                         </div>
@@ -57,7 +57,7 @@ export default {
 <style lang="scss" type="text/css" scoped>
 
     .index1{width: 100%;height: 100%;
-        .constructor{position: absolute;width: 500px;height: 300px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;text-align: center;animation: hide-show 4s ease-in-out 4s;animation-fill-mode: forwards;opacity: 0;z-index: 2000;
+        .constructor{position: absolute;width: 500px;height: 300px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;text-align: center;animation: hide-show 3s ease-in-out 3s;animation-fill-mode: forwards;opacity: 0;z-index: 2000;
             .box{position: absolute;left: 0;top: 0;right: 0;bottom: 0;width: 50%;height: 90%;margin: auto;padding: 6% 0;
                 h1{margin-bottom: 2%;color: #ddd;font-size: 60px;}
                 span{display: block;margin-bottom: 4%;color: #bbb;font-size: 20px;}
@@ -85,8 +85,8 @@ export default {
 
             }
         }
-        .coding{width: 100%;height: 100%;animation: show-hide 5s linear 4s;animation-fill-mode: forwards;opacity: 1;z-index: 1;}
-        .page1-bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(24, 35, 39, .8);animation: hide-show 5s linear 4s;animation-fill-mode: forwards;opacity: 0;z-index: 1;}
+        .coding{width: 100%;height: 100%;animation: show-hide 3s linear 2s;animation-fill-mode: forwards;opacity: 1;z-index: 1;}
+        .page1-bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: rgba(24, 35, 39, .8);animation: hide-show 4s linear 3s;animation-fill-mode: forwards;opacity: 0;z-index: 1;}
 
     }
 

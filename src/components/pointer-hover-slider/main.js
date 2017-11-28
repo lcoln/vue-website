@@ -53,14 +53,14 @@ class hover{
                 movey = ev.offsetX
                 if(movey < halfw){
                     movey = -(halfw - movey) / halfw * opt.angle
-                }else if(movey > halfw){
+                }else if(movey >= halfw){
                     movey = (movey - halfw) / halfw * opt.angle
                 }
 
                 movex = ev.offsetY
                 if(movex < halfh){
                     movex = (halfh - movex) / halfh * opt.angle
-                }else if(movex > halfh){
+                }else if(movex >= halfh){
                     movex = -(movex - halfh) / halfh * opt.angle
                 }
 

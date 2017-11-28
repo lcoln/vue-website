@@ -2,8 +2,8 @@
     <div class="index4">
         <div class="cover-bg">
             <img class="cover-bg-item" :class="{'show': curPage == 1}" src="/static/images/blog-detail.png">
-            <img class="cover-bg-item" :class="{'show': curPage == 2}" src="/static/images/vue.jpg">
-            <img class="cover-bg-item" :class="{'show': curPage == 3}" src="/static/images/bg.jpg">
+            <img class="cover-bg-item" :class="{'show': curPage == 2}" src="/static/images/components.png">
+            <img class="cover-bg-item" :class="{'show': curPage == 3}" src="/static/images/resume.png">
             <div class="bg"></div>
         </div>
         <div class="box">
@@ -17,11 +17,25 @@
                 <div class="bg"></div>
             </section>
             <section draggable="true" class="project" :class="{'cur': curPage == 2}" @click="choose(2)">
-                <div class="cover" style="background: #607D8B;"></div>
+                <div class="cover" style="background: #607D8B;">
+                    <h1 class="components">COMPONENTS</h1>
+                </div>
+                <div class="content">
+                    <span>COMPONENTS</span>
+                    <a class="iconfont" target="_blank" href="http://components.cncoders.me">&#xe61d;: http://components.cncoders.me</a>
+                    <a class="iconfont" target="_blank" href="https://github.com/lcoln/vue-components">&#xe6b6;: https://github.com/lcoln/vue-components</a>
+                </div>
                 <div class="bg"></div>
             </section>
             <section draggable="true" class="project" :class="{'cur': curPage == 3}" @click="choose(3)">
-                <div class="cover" style="background: #ccc;"></div>
+                <div class="cover" style="background: #666">
+                    <h1 class="components">RESUME</h1>
+                </div>
+                <div class="content">
+                    <span>RESUME</span>
+                    <a class="iconfont" target="_blank" href="https://resume.cncoders.me">&#xe61d;: https://resume.cncoders.me</a>
+                    <!-- <a class="iconfont" target="_blank" href="https://github.com/lcoln/vue-components">&#xe6b6;: https://github.com/lcoln/vue-components</a> -->
+                </div>
                 <div class="bg"></div>
             </section>
         </div>
@@ -63,7 +77,9 @@ export default {
             }
 
             .project{position: absolute;width: 33.3999%;height: 600px;transition: .4s;
-                .cover{height: 100%;width: 100%;object-fit: cover;}
+                .cover{height: 100%;width: 100%;object-fit: cover;
+                    .components{position: absolute;top: 0;bottom: 0;right: 0;left: 0;margin: auto;width: 205px;height: 30px;font-size: 30px;color: #fff;}
+                }
                 .content{position: absolute;bottom: 10px;width: 100%;padding: 5px 0 10px 15px;border-left: 10px solid #294f42;box-shadow: 4px 4px 5px #1c1c1c;z-index: 2;text-align: left;background: rgba(0, 0, 0, 0.6);color: #999;transition: .4s;opacity: 0;
                     span{display: block;margin-left: -5px;margin-bottom: 10px;font-size: 20px;}
                     a{display: block;margin-top: 5px;color: #999;text-decoration: none;}
