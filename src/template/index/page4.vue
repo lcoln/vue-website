@@ -22,7 +22,7 @@
                 </div>
                 <div class="content">
                     <span>COMPONENTS</span>
-                    <a class="iconfont" target="_blank" href="http://components.cncoders.me">&#xe61d;: http://components.cncoders.me</a>
+                    <a class="iconfont" target="_blank" href="https://components.cncoders.me">&#xe61d;: https://components.cncoders.me</a>
                     <a class="iconfont" target="_blank" href="https://github.com/lcoln/vue-components">&#xe6b6;: https://github.com/lcoln/vue-components</a>
                 </div>
                 <div class="bg"></div>
@@ -97,14 +97,6 @@ export default {
 
             @include max-screen(1300px){
                 width: 850px;
-            }
-
-            @include max-screen(1080px){
-                width: 590px;
-            }
-
-            @include max-screen(850px){
-                width: 350px;
             }
         }
         .cover-bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;
