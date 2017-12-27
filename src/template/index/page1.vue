@@ -64,7 +64,7 @@ export default {
                 .line{position: relative;width: 100%;height: 1px;margin: 0;background: #bbb;}
                 .line:after{content: '';position: absolute;top: 10px;left: 0;right: 0;margin: auto;width: 50%;height: 1px;background: #bbb;}
                 .contact{color: #ddd;margin-top: 12%;
-                    .item{position: relative;display: inline-block;width: 50px;height: 50px;border-radius: 50%;line-height: 50px;margin: 0 10px;transition: .1s;color: #ddd;cursor: pointer;
+                    .item{position: relative;display: inline-block;width: 50px;height: 50px;border-radius: 50%;line-height: 50px;margin: 0 10px;transition: .1s;color: #ddd;cursor: pointer;text-decoration: none;
                         i{display: block;position: relative;border-radius: 50%;font-size: 35px;transform: rotate(10deg) scale(0.8);transition: .4s;}
                         i:nth-of-type(3){position: relative;bottom: 1px;}
                         .half-circle{position: absolute;height: 100%;width: 50%;overflow: hidden;

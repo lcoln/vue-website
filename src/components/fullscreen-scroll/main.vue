@@ -41,7 +41,8 @@
                 if(!store.state.approved)
                     return
                 let curIndex = this.curIndex
-                let dom = document.querySelector(`.index${curIndex + 1}`)
+                let dom = this.$children[curIndex].$el
+                // console.log(this.$children[curIndex].$el);
                 if(dom){
                     if(dom.scrollHeight - dom.clientHeight > 3){
                         if(dom.scrollTop < dom.scrollHeight - dom.clientHeight && e.deltaY > 0){
